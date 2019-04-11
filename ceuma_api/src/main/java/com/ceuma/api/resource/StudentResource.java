@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ceuma.api.event.ResourceCreatedEvent;
 import com.ceuma.api.model.Student;
 import com.ceuma.api.repository.StudentRepository;
+import com.ceuma.api.repository.filter.StudentFilter;
 import com.ceuma.api.service.StudentService;
 
 @RestController
@@ -38,8 +39,8 @@ public class StudentResource {
 	private StudentService studentService;
 	
 	@GetMapping
-	public List<Student> listAll(){
-		return studentRepository.findAll();
+	public List<Student> search(StudentFilter studentFilter){
+		return studentRepository.filterStudents(studentFilter);
 	}
 	
 	@PostMapping
