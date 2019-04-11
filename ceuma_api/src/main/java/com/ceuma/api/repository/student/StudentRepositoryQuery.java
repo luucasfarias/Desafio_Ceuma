@@ -1,11 +1,12 @@
 package com.ceuma.api.repository.student;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import com.ceuma.api.model.Student;
 import com.ceuma.api.repository.filter.StudentFilter;
 
 public interface StudentRepositoryQuery {
 	
-	public List<Student> filterStudents(StudentFilter studentFilter);
+	public Page<Student> filterStudents(StudentFilter studentFilter, Pageable pageable);
 }

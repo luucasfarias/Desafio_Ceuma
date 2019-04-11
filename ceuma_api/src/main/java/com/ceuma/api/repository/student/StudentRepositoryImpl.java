@@ -11,6 +11,9 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 
 import com.ceuma.api.model.Student;
@@ -22,7 +25,7 @@ public class StudentRepositoryImpl implements StudentRepositoryQuery {
 	private EntityManager manager;
 
 	@Override
-	public List<Student> filterStudents(StudentFilter studentFilter) {
+	public Page<Student> filterStudents(StudentFilter studentFilter, Pageable pageable) {
 		CriteriaBuilder builder = manager.getCriteriaBuilder();
 		CriteriaQuery<Student> criteria = builder.createQuery(Student.class);
 		Root<Student> root = criteria.from(Student.class);
@@ -33,7 +36,32 @@ public class StudentRepositoryImpl implements StudentRepositoryQuery {
 		
 		
 		TypedQuery<Student> query = manager.createQuery(criteria);
-		return query.getResultList();
+		addPagingRestrictions(query, pageable);
+		
+		return new PageImpl<>(query.getResultList(), pageable, total(studentFilter));
+	}
+
+	private Long total(StudentFilter studentFilter) {
+		CriteriaBuilder builder = manager.getCriteriaBuilder();
+		CriteriaQuery<Long> criteria = builder.createQuery(Long.class);
+		Root<Student> root = criteria.from(Student.class);
+		
+		Predicate[] predicates = createRestrictions(studentFilter, builder, root);
+		criteria.where(predicates);
+		
+		criteria.select(builder.count(root));
+		
+		return manager.createQuery(criteria).getSingleResult();
+	}
+
+	private void addPagingRestrictions(TypedQuery<Student> query, Pageable pageable) {
+		// similar to "pagina atual" and "registros total" in portugues
+		int currentPage = pageable.getPageNumber();
+		int totalRecordsPage = pageable.getPageSize();
+		int firstRecords = currentPage * totalRecordsPage;
+		
+		query.setFirstResult(firstRecords);
+		query.setMaxResults(totalRecordsPage);
 	}
 
 	private Predicate[] createRestrictions(StudentFilter studentFilter, CriteriaBuilder builder,

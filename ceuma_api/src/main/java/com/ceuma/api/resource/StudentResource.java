@@ -1,12 +1,12 @@
 package com.ceuma.api.resource;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -39,8 +39,8 @@ public class StudentResource {
 	private StudentService studentService;
 	
 	@GetMapping
-	public List<Student> search(StudentFilter studentFilter){
-		return studentRepository.filterStudents(studentFilter);
+	public Page<Student> search(StudentFilter studentFilter, Pageable pageable){
+		return studentRepository.filterStudents(studentFilter, pageable);
 	}
 	
 	@PostMapping
