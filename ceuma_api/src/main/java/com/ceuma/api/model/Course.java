@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "course")
@@ -18,6 +19,7 @@ public class Course {
 	private Long id;
 
 	@NotNull
+	@Size(min = 5, max = 45)
 	private String name;
 
 	@NotNull
@@ -25,6 +27,7 @@ public class Course {
 	private LocalDate dateRegister;
 
 	@NotNull
+	@Size(min = 1, max = 10)
 	private String workload;
 
 	public Long getId() {
