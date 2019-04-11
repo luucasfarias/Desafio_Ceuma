@@ -21,7 +21,7 @@ public class Course {
 	private String name;
 
 	@NotNull
-	@Column(name = "date_registro")
+	@Column(name = "date_register")
 	private LocalDate dateRegister;
 
 	@NotNull
