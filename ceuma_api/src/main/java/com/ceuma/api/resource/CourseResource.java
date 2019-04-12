@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,11 +41,13 @@ public class CourseResource {
 	private ApplicationEventPublisher publisher;
 
 	@GetMapping
+	@PreAuthorize("hasAuthority('ROLE_SEARCH_COURSE') and #oauth2.hasScope('read')")
 	public List<Course> listAll() {
 		return courseRepository.findAll();
 	}
 
 	@PostMapping
+	@PreAuthorize("hasAuthority('ROLE_REGISTER_COURSE') and #oauth2.hasScope('write')")
 	public ResponseEntity<Course> createCourse(@Valid @RequestBody Course course, HttpServletResponse response) {
 		Course courseSaved = courseRepository.save(course);
 		publisher.publishEvent(new ResourceCreatedEvent(this, response, courseSaved.getId()));
@@ -52,6 +55,7 @@ public class CourseResource {
 	}
 
 	@GetMapping("/{id}")
+	@PreAuthorize("hasAuthority('ROLE_SEARCH_COURSE') and #oauth2.hasScope('read')")
 	public ResponseEntity<Course> searchById(@PathVariable Long id) {
 		Course course = courseRepository.findOne(id);
 		return course != null ? ResponseEntity.ok(course) : ResponseEntity.notFound().build();
@@ -59,11 +63,13 @@ public class CourseResource {
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@PreAuthorize("hasAuthority('ROLE_DELETE_COURSE')")
 	public void deleteCourse(@PathVariable Long id) {
 		courseRepository.delete(id);
 	}
 
 	@PutMapping("/{id}")
+	@PreAuthorize("hasAuthority('ROLE_UPDATE_COURSE')")
 	public ResponseEntity<Course> updateCourse(@PathVariable Long id, @Valid @RequestBody Course course) {
 		Course courseSaved = courseService.update(id, course);
 		return ResponseEntity.ok(courseSaved);
