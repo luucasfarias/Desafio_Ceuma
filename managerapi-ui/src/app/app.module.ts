@@ -12,7 +12,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { StudentComponent } from './student/student.component';
 import { CourseComponent } from './course/course.component';
 import { StudentFormComponent } from './student-form/student-form.component';
-
+import {PanelModule} from 'primeng/primeng';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +26,8 @@ import { StudentFormComponent } from './student-form/student-form.component';
     InputTextModule,
     ButtonModule,
     DataTableModule,
-    TooltipModule
+    TooltipModule,
+    PanelModule
   ],
   providers: [],
   bootstrap: [AppComponent]
