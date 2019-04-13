@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentFormComponent implements OnInit {
 
+  courses = [
+    { label: 'Administração', value: 1 },
+    { label: 'Direito', value: 2 },
+    { label: 'Medicina', value: 3 }
+  ]
   constructor() { }
 
   ngOnInit() {
