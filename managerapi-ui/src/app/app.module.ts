@@ -11,7 +11,7 @@ import { TooltipModule } from 'primeng/components/tooltip/tooltip';
 import { NavbarComponent } from './navbar/navbar.component';
 import { StudentComponent } from './student/student.component';
 import { CourseComponent } from './course/course.component';
-import { OpsComponent } from './ops/ops.component';
+import { StudentFormComponent } from './student-form/student-form.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { OpsComponent } from './ops/ops.component';
     NavbarComponent,
     StudentComponent,
     CourseComponent,
-    OpsComponent,
+    StudentFormComponent,
   ],
   imports: [
     BrowserModule,
