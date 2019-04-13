@@ -5,13 +5,13 @@
     </div>
 
     <div class="ui-g-12">
-      <a href="#" pButton label="Novo Curso"></a>
+      <button type="button" (click)="showDialog()" icon="fa-plus" pButton label="Novo Curso"></button>
     </div>
 
     <div class="ui-g">
       <div class="ui-g-12">
         <p-dataTable [value]="courses" [paginator]="true" [rows]="4" [responsive]="true">
-          <p-column field="name" header="NOME" styleClass="col-name"></p-column>
+          <p-column field="name" header="CURSO" styleClass="col-name"></p-column>
           <p-column header="DATA REGISTRO" styleClass="col-data">
             <ng-template let-course="rowData" pTemplate="body">
               <span>{{ course.date_register | date:'dd/MM/yyyy' }}</span>
@@ -29,3 +29,28 @@
     </div>
   </div>
 </div>
+
+<p-dialog header="Cadastrar novo curso" [(visible)]="display" modal="modal" width="700" [responsive]="true">
+  <div class="ui-g-4 ui-fluid">
+    <label>Curso</label>
+    <input type="text" pInputText placeholder="Ex: Amanda Costa">
+  </div>
+
+  <div class="ui-g-4">
+    <label>Data Registro</label>
+    <input type="text" pInputText placeholder="Ex: 10/09/2019">
+    <!--
+      <p-calendar [(ngModel)]="dateValue" [disabledDates]="invalidDates" [disabledDays]="[0,6]" readonlyInput="readonlyInput"></p-calendar>
+    -->
+  </div>
+
+  <div class="ui-g-4">
+    <label>Carga Horária</label>
+    <input type="text" pInputText placeholder="Ex: 190 horas">
+  </div>
+
+  <p-footer>
+    <button type="button" pButton (click)="display=false" label="Não"></button>
+    <button type="button" pButton (click)="display=false" label="Sim"></button>
+  </p-footer>
+</p-dialog>
