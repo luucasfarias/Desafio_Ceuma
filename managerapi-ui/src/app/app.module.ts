@@ -12,7 +12,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { StudentComponent } from './student/student.component';
 import { CourseComponent } from './course/course.component';
 import { StudentFormComponent } from './student-form/student-form.component';
-import {PanelModule} from 'primeng/primeng';
+import { DialogModule } from 'primeng/primeng';
+import { CalendarModule } from 'primeng/primeng';
+import { FormsModule } from '@angular/forms';
+import { DropdownModule } from 'primeng/primeng';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,11 +28,15 @@ import {PanelModule} from 'primeng/primeng';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     InputTextModule,
     ButtonModule,
     DataTableModule,
     TooltipModule,
-    PanelModule
+    DialogModule,
+    CalendarModule,
+    FormsModule,
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]
