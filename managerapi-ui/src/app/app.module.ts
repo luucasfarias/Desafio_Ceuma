@@ -6,6 +6,8 @@ import { NgModule } from '@angular/core';
 import { StudentsModule } from './students/students.module';
 import { CoursesModule } from './courses/courses.module';
 import { CoreModule } from './core/core.module';
+import { HttpModule } from '@angular/http';
+import { CoursesService } from './courses/courses.service';
 
 @NgModule({
   declarations: [
@@ -13,12 +15,13 @@ import { CoreModule } from './core/core.module';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     BrowserAnimationsModule,
     StudentsModule,
     CoursesModule,
     CoreModule
   ],
-  providers: [],
+  providers: [CoursesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
