@@ -14,7 +14,7 @@
           <p-column field="name" header="CURSO" styleClass="col-name"></p-column>
           <p-column header="DATA REGISTRO" styleClass="col-data">
             <ng-template let-course="rowData" pTemplate="body">
-              <span>{{ course.date_register | date:'dd/MM/yyyy' }}</span>
+              <span>{{ course.dateRegister | date:'dd/MM/yyyy' }}</span>
             </ng-template>
           </p-column>
           <p-column field="workload" header="CARGA HORÁRIA" styleClass="col-workload"></p-column>
