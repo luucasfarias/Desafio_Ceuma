@@ -29,4 +29,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Starter
 
-java -jar ceuma_api-1.0.0-SNAPSHOT.jar --spring.datasource.username=root --spring.datasource.password=passworddb --ceumapi.allowed.origin=http://localhost:4200
+java -jar ceuma_api-1.0.0-SNAPSHOT.jar --spring.datasource.username=root --spring.datasource.password=passwordb --ceumapi.allowed.origin=http://localhost:4200
