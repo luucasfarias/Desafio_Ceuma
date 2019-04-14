@@ -1,4 +1,4 @@
-# ManagerapiUi
+# ManagerapiUi - Desafio Ceuma
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.3.
 
@@ -28,4 +28,4 @@ Before running the tests make sure you are serving the app via `ng serve`.
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 ##Starter
-java -jar algamoney-api-1.0.0-SNAPSHOT.jar --spring.datasource.username=root --spring.datasource.password=lucas21@ --algamoney.origin-permitida=http://localhost:4200
+java -jar ceuma_api-1.0.0-SNAPSHOT.jar --spring.datasource.username=root --spring.datasource.password=lucas21@ --ceumapi.allowed.origin=http://localhost:4200

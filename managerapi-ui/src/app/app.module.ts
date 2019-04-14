@@ -5,18 +5,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { NavbarComponent } from './navbar/navbar.component';
-import { MessageComponent } from './message/message.component';
-
 
 import { StudentsModule } from './students/students.module';
 import { CoursesModule } from './courses/courses.module';
 
-
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    MessageComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

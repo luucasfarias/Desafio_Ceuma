@@ -8,6 +8,7 @@ import {
 } from 'primeng/primeng';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StudentFormComponent } from './student-form/student-form.component';
+import { SharedModule } from 'app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -20,7 +21,9 @@ import { StudentFormComponent } from './student-form/student-form.component';
     DataTableModule,
     TooltipModule,
     DialogModule,
-    DropdownModule
+    DropdownModule,
+
+    SharedModule
   ],
   declarations: [StudentSearchComponent, StudentFormComponent],
   exports: [StudentSearchComponent, StudentFormComponent]
