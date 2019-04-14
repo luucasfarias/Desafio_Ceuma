@@ -31,24 +31,34 @@
 </div>
 
 <p-dialog header="Cadastrar novo curso" [(visible)]="display" modal="modal" width="700" [responsive]="true">
-  <div class="ui-g-4 ui-fluid">
-    <label>Curso</label>
-    <input type="text" pInputText placeholder="Ex: Amanda Costa">
-  </div>
+  <form>
+    <div class="ui-g-4 ui-fluid">
+      <label>Curso</label>
+      <input type="text" pInputText placeholder="Ex: Amanda Costa" name="course_name" ngModel #course_name="ngModel"
+        required minlength="10">
 
-  <div class="ui-g-4">
-    <label>Data Registro</label>
-    <input type="text" pInputText placeholder="Ex: 10/09/2019">
-    <!--
+      <app-message [control]="course_name" error="required" text="Campo obrigatório"></app-message>
+      <app-message [control]="course_name" error="minlength"
+        text="Mínimo de {{ course_name.errors?.minlength?.requiredLength }}"></app-message>
+    </div>
+
+    <div class="ui-g-4">
+      <label>Data Registro</label>
+      <input type="text" pInputText placeholder="Ex: 10/09/2019" name="data_register" ngModel #data_register="ngModel"
+        required>
+
+      <app-message [control]="data_register" error="required" text="Campo obrigatório"></app-message>
+      <!--
       <p-calendar [(ngModel)]="dateValue" [disabledDates]="invalidDates" [disabledDays]="[0,6]" readonlyInput="readonlyInput"></p-calendar>
     -->
-  </div>
+    </div>
 
-  <div class="ui-g-4">
-    <label>Carga Horária</label>
-    <input type="text" pInputText placeholder="Ex: 190 horas">
-  </div>
-
+    <div class="ui-g-4">
+      <label>Carga Horária</label>
+      <input type="text" pInputText placeholder="Ex: 190 horas" name="workload" ngModel #workload="ngModel" required>
+      <app-message [control]="workload" error="required" text="Campo obrigatório"></app-message>
+    </div>
+  </form>
   <p-footer>
     <button type="button" pButton (click)="display=false" label="Não"></button>
     <button type="button" pButton (click)="display=false" label="Sim"></button>
