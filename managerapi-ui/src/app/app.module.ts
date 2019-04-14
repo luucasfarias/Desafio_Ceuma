@@ -16,6 +16,7 @@ import { DialogModule } from 'primeng/primeng';
 import { CalendarModule } from 'primeng/primeng';
 import { FormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/primeng';
+import { MessageComponent } from './message/message.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { DropdownModule } from 'primeng/primeng';
     StudentComponent,
     CourseComponent,
     StudentFormComponent,
+    MessageComponent,
   ],
   imports: [
     BrowserModule,
