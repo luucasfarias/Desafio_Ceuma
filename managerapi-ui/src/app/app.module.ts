@@ -1,24 +1,22 @@
-
 import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
-import { NavbarComponent } from './navbar/navbar.component';
-
 import { StudentsModule } from './students/students.module';
 import { CoursesModule } from './courses/courses.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     StudentsModule,
-    CoursesModule
+    CoursesModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
