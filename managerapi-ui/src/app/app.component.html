@@ -1,8 +1,16 @@
 <app-navbar></app-navbar>
-<app-course></app-course>
+<app-student-search></app-student-search>
 
+
+<ng2-toasty></ng2-toasty>
+<p-confirmDialog header="Confirmação" icon="fa fa-question-circle" width="450" #cd>
+  <p-footer>
+    <button type="button" pButton label="Sim" (click)="cd.accept()"></button>
+    <button type="button" pButton label="Não" (click)="cd.reject()"></button>
+  </p-footer>
+</p-confirmDialog>
 <!-- ? Componentes -->
 <!--
+  <app-course></app-course>
   <app-student-form></app-student-form>
-  <app-student-search></app-student-search>
 -->
