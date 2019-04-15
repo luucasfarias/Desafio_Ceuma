@@ -10,6 +10,10 @@ import { ErrorHandlerService } from './error-handler.service';
 import { StudentService } from 'app/students/student.service';
 import { CoursesService } from 'app/courses/courses.service';
 import { RouterModule } from '@angular/router';
+import { CardComponent } from './card/card.component';
+import { PageNotFoundComponent } from './page-not-found.component';
+import { Title } from '@angular/platform-browser';
+
 
 @NgModule({
   imports: [
@@ -18,7 +22,7 @@ import { RouterModule } from '@angular/router';
     ConfirmDialogModule,
     RouterModule
   ],
-  declarations: [NavbarComponent],
+  declarations: [NavbarComponent, CardComponent, PageNotFoundComponent],
   exports: [
     NavbarComponent,
     ToastyModule,
@@ -29,6 +33,7 @@ import { RouterModule } from '@angular/router';
     CoursesService,
     StudentService,
     ConfirmationService,
+    Title,
     { provide: LOCALE_ID, useValue: 'pt-BR' }
   ]
 })
