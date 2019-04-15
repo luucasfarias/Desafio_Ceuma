@@ -14,7 +14,7 @@ import { CardComponent } from './card/card.component';
 import { PageNotFoundComponent } from './page-not-found.component';
 import { Title } from '@angular/platform-browser';
 import { AuthService } from 'app/security/auth.service';
-
+import { JwtHelper } from 'angular2-jwt';
 
 @NgModule({
   imports: [
@@ -36,6 +36,7 @@ import { AuthService } from 'app/security/auth.service';
     ConfirmationService,
     Title,
     AuthService,
+    JwtHelper,
     { provide: LOCALE_ID, useValue: 'pt-BR' }
   ]
 })
