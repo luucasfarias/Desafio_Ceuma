@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { StudentService, StudentFilter } from '../student.service';
 import { LazyLoadEvent, ConfirmationService } from 'primeng/primeng';
 import { ToastyService } from 'ng2-toasty';
+import { ErrorHandlerService } from 'app/core/error-handler.service';
 
 @Component({
   selector: 'app-student-search',
@@ -18,8 +19,13 @@ export class StudentSearchComponent implements OnInit {
 
   @ViewChild('table') gridTable;
 
-  constructor(private studentService: StudentService, private toasty: ToastyService,
-    private confirmation: ConfirmationService) { }
+  // ? Injetano services
+  constructor(
+    private studentService: StudentService,
+    private toasty: ToastyService,
+    private confirmation: ConfirmationService,
+    private errorHandler: ErrorHandlerService
+  ) { }
 
   ngOnInit() {
     // this.search();
@@ -31,7 +37,7 @@ export class StudentSearchComponent implements OnInit {
       .then(result => {
         this.totalRegisters = result.total;
         this.students = result.data;
-      });
+      }).catch(error => this.errorHandler.handle(error));
   }
 
   changePage(event: LazyLoadEvent) {
@@ -48,7 +54,7 @@ export class StudentSearchComponent implements OnInit {
         this.gridTable.first = 0;
       }
       this.toasty.success('Aluno excluído com sucesso!');
-    });
+    }).catch(error => this.errorHandler.handle(error));
   }
 
   confirmDelete(student: any) {
