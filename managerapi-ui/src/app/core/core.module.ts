@@ -15,6 +15,7 @@ import { PageNotFoundComponent } from './page-not-found.component';
 import { Title } from '@angular/platform-browser';
 import { AuthService } from 'app/security/auth.service';
 import { JwtHelper } from 'angular2-jwt';
+import { NotAuthorizedComponent } from './not-authorized.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,10 @@ import { JwtHelper } from 'angular2-jwt';
     ConfirmDialogModule,
     RouterModule
   ],
-  declarations: [NavbarComponent, CardComponent, PageNotFoundComponent],
+  declarations: [
+    NavbarComponent, CardComponent, PageNotFoundComponent,
+    NotAuthorizedComponent
+  ],
   exports: [
     NavbarComponent,
     ToastyModule,
