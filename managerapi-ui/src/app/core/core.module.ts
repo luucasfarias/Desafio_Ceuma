@@ -9,12 +9,14 @@ import { ErrorHandlerService } from './error-handler.service';
 
 import { StudentService } from 'app/students/student.service';
 import { CoursesService } from 'app/courses/courses.service';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     ToastyModule.forRoot(),
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    RouterModule
   ],
   declarations: [NavbarComponent],
   exports: [

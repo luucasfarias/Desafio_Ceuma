@@ -9,6 +9,7 @@ import {
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StudentFormComponent } from './student-form/student-form.component';
 import { SharedModule } from 'app/shared/shared.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { SharedModule } from 'app/shared/shared.module';
     TooltipModule,
     DialogModule,
     DropdownModule,
+    RouterModule,
 
     SharedModule
   ],

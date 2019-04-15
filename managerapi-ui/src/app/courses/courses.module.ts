@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { DialogModule, InputTextModule, ButtonModule, DataTableModule, TooltipModule, MessagesModule } from 'primeng/primeng';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from 'app/shared/shared.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { SharedModule } from 'app/shared/shared.module';
     DataTableModule,
     TooltipModule,
     DialogModule,
+    RouterModule,
 
     SharedModule
   ],
