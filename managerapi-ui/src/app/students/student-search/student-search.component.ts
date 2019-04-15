@@ -3,6 +3,7 @@ import { StudentService, StudentFilter } from '../student.service';
 import { LazyLoadEvent, ConfirmationService } from 'primeng/primeng';
 import { ToastyService } from 'ng2-toasty';
 import { ErrorHandlerService } from 'app/core/error-handler.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-student-search',
@@ -24,10 +25,12 @@ export class StudentSearchComponent implements OnInit {
     private studentService: StudentService,
     private toasty: ToastyService,
     private confirmation: ConfirmationService,
-    private errorHandler: ErrorHandlerService
+    private errorHandler: ErrorHandlerService,
+    private title: Title
   ) { }
 
   ngOnInit() {
+    this.title.setTitle('Pesquisa de alunos');
     // this.search();
   }
 
