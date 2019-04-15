@@ -8,6 +8,7 @@ import { CoreModule } from './core/core.module';
 import { StudentsModule } from './students/students.module';
 import { CoursesModule } from './courses/courses.module';
 import { AppRoutingModule } from './app-rounting.module';
+import { SecurityModule } from './security/security.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AppRoutingModule } from './app-rounting.module';
     CoursesModule,
     CoreModule,
     AppRoutingModule,
+    SecurityModule
 
   ],
   providers: [],
