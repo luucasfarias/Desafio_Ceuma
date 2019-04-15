@@ -1,0 +1,41 @@
+.overview-box-title{
+  font-size: 30px;
+}
+.overview-box.overview-box-1 {
+  background-color: #06bad2;
+  width: 530px;
+}
+
+.overview-box {
+  color: #ffffff;
+  margin-bottom: 0;
+}
+
+.ui-g {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+.overview-box-2 {
+  color: #ffffff;
+  margin-bottom: 0;
+
+}
+
+.overview-box-2.overview-box-2 {
+  background-color: #f9c851;
+  width: 530px;
+}
+
+.overview-box-content {
+  margin: 0;
+}
+
+.image {
+  size: 10px;
+}
+
+.card {
+  margin-top: 0px;
+}
