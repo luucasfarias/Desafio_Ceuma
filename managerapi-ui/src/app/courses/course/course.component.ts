@@ -3,6 +3,8 @@ import { CoursesService } from '../courses.service';
 import { ToastyService } from 'ng2-toasty';
 import { ConfirmationService } from 'primeng/primeng';
 import { ErrorHandlerService } from 'app/core/error-handler.service';
+import { Course } from 'app/core/model';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-course',
@@ -16,6 +18,8 @@ export class CourseComponent implements OnInit {
   courses = [];
 
   display: boolean = false;
+
+  course = new Course();
 
   ngOnInit() {
     this.search();
@@ -53,5 +57,16 @@ export class CourseComponent implements OnInit {
         }
       }
     );
+  }
+
+  save(form: FormControl) {
+    this.courseService.saveCourses(this.course).then(() => {
+      this.toasty.success('Curso cadastrado com sucesso!');
+      form.reset();
+      this.course = new Course();
+    })
+      .catch(error => this.errorHandler.handle(error));
+    console.log(this.course);
+
   }
 }
