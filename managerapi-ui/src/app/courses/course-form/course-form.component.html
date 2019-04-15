@@ -1,0 +1,36 @@
+<div class="container">
+  <form #f="ngForm" autocomplet="off" (ngSubmit)="save(f)">
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <a routerLink="/cursos" class="back">Voltar para a pesquisa</a>
+      </div>
+
+      <div class="ui-g-12">
+        <h1> {{isEditing ? 'Edição de' : 'Cadastrar Novo'}} Curso</h1>
+      </div>
+
+      <div class="ui-g-5 ui-fluid">
+        <label>Nome</label>
+        <input type="text" pInputText name="name" ngModel #name_course="ngModel" [(ngModel)]="course.name" required
+          minlength="5">
+      </div>
+
+      <div class="ui-g-3 ui-fluid">
+        <label>Data Registro</label>
+        <p-calendar name="dateRegister" dateFormat="dd/mm/yy" [inline]="false" [readonlyInput]="false" [showIcon]="true"
+          [(ngModel)]="course.dateRegister" #dateRegister="ngModel"></p-calendar>
+      </div>
+
+      <div class="ui-g-4 ui-fluid">
+        <label>Carga Horária</label>
+        <input type="text" pInputText name="workload" ngModel #workload="ngModel" [(ngModel)]="course.workload"
+          required>
+      </div>
+
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+        <button type="button" pButton (click)="newCourse(f)"  label="Novo"  class="ui-button-info"></button>
+      </div>
+    </div>
+  </form>
+</div>

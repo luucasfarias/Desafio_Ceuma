@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <h1>Cursos Cadastrados</h1>
+    </div>
+
+    <div class="ui-g-12">
+      <a type="button" routerLink="/cursos/novo" pButton label="Novo Curso"></a>
+    </div>
+
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <p-dataTable [value]="courses" [paginator]="true" [rows]="4" [responsive]="true">
+          <p-column field="name" header="CURSO" styleClass="col-name"></p-column>
+          <p-column header="DATA REGISTRO" styleClass="col-data">
+            <ng-template let-course="rowData" pTemplate="body">
+              <span>{{ course.dateRegister | date:'dd/MM/yyyy' }}</span>
+            </ng-template>
+          </p-column>
+          <p-column field="workload" header="CARGA HORÁRIA" styleClass="col-workload"></p-column>
+          <p-column styleClass="col-actions">
+            <ng-template let-course="rowData" pTemplate="body">
+              <a pButton icon="fa-pencil" [routerLink]="['/cursos', course.id]" pTooltip="Editar" tooltipPosition="top"></a>
+              <button pButton icon="fa-trash" pTooltip="Excluír" tooltipPosition="top"
+                (click)="confirmDelete(course)"></button>
+            </ng-template>
+          </p-column>
+        </p-dataTable>
+      </div>
+    </div>
+  </div>
+</div>
