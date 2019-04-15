@@ -63,6 +63,31 @@ export class StudentService {
     return this.http.post(this.studentsUrl,
       JSON.stringify(student), { headers })
       .toPromise().then(response => response.json());
+  }
 
+  update(student: Student): Promise<Student> {
+    const headers = new Headers();
+    headers.append('Authorization', 'Basic YWRtaW5AY2V1bWEuY29tOmFkbWlu');
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.put(`${this.studentsUrl}/${student.id}`,
+      JSON.stringify(student), { headers })
+      .toPromise()
+      .then(response => {
+        const studentModificator = response.json();
+
+        return studentModificator;
+      });
+  }
+  buscarPorCodigo(id: number): Promise<Student> {
+    const headers = new Headers();
+    headers.append('Authorization', 'Basic YWRtaW5AY2V1bWEuY29tOmFkbWlu');
+
+    return this.http.get(`${this.studentsUrl}/${id}`, { headers })
+      .toPromise()
+      .then(response => {
+        const student = response.json();
+        return student;
+      });
   }
 }

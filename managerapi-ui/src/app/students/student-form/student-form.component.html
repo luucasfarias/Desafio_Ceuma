@@ -6,7 +6,7 @@
       </div>
 
       <div class="ui-g-12">
-        <h1>Cadastrar Novos Cursos</h1>
+        <h1> {{isEditing ? 'Edição de' : 'Cadastrar Novo'}} Aluno</h1>
       </div>
 
 
@@ -118,8 +118,9 @@
       </div>
 
       <div class="ui-g-12">
-        <button pButton type="submit" label="Salvar"></button>
-        <a pButton label="Novo" routerLink="/alunos/novo" class="ui-button-info"></a>
+        <button *ngIf="!isEditing" (click)="cleanFields(f)"  type="button" pButton label="Limpar" class="ui-button-danger"></button>
+        <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+        <button *ngIf="isEditing"  type="button" pButton (click)="newStudent(f)"  label="Novo"  class="ui-button-info"></button>
       </div>
     </div>
   </form>
