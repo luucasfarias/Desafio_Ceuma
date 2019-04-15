@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CoursesService } from 'app/courses/courses.service';
+import { ErrorHandlerService } from 'app/core/error-handler.service';
+
 
 @Component({
   selector: 'app-student-form',
@@ -7,14 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentFormComponent implements OnInit {
 
-  courses = [
-    { label: 'Administração', value: 1 },
-    { label: 'Direito', value: 2 },
-    { label: 'Medicina', value: 3 }
-  ]
-  constructor() { }
+  courses = [];
+
+  constructor(
+    private couseService: CoursesService,
+    private errorHandler: ErrorHandlerService
+  ) { }
 
   ngOnInit() {
+    this.loadCourses();
+  }
+
+  loadCourses() {
+    return this.couseService.searchCourse()
+      .then(response => {
+        this.courses = response.map(c => {
+          return { label: c.name, value: c.id };
+        })
+      }).catch(error => this.errorHandler.handle(error));
   }
 
 }

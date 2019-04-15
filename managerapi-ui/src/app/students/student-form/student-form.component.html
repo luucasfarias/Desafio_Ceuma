@@ -1,13 +1,14 @@
 <div class="container">
-  <form>
+  <form #f="ngForm" autocomplet="off">
     <div class="ui-g">
-      <div class="ui-g-12">
-        <h1>Cadastrar Novo Aluno</h1>
-      </div>
-
       <div class="ui-g-12">
         <a href="#" class="back">Voltar para a pesquisa</a>
       </div>
+
+      <div class="ui-g-12">
+        <h1>Cadastrar Novos Cursos</h1>
+      </div>
+
 
       <div class="ui-g-5 ui-fluid">
         <label>Nome</label>
@@ -27,7 +28,6 @@
         <app-message [control]="cpf" error="required" text="Campo obrigatorio"></app-message>
         <app-message [control]="cpf" error="minlength"
           text="Este campo deve ter no mínimo {{ cpf.errors?.minlength?.requiredLength }}"></app-message>
-
       </div>
 
       <div class="ui-g-4 ui-fluid">
@@ -106,15 +106,14 @@
 
       <div class="ui-g-3 ui-fluid">
         <label for="">Curso</label>
-        <p-dropdown [options]="courses" [autoWidth]="false" [filter]="true" name="course" required ngModel
-          #course="ngModel" placeholder="Selecione"></p-dropdown>
-        <app-message [control]="course" error="required" text="Campo obrigatorio"></app-message>
+        <p-dropdown name="course" [options]="courses" [filter]="true" [autoWidth]="false" ngModel
+          placeholder="Selecione" required></p-dropdown>
       </div>
-    </div>
 
-    <div class="ui-g-12">
-      <button pButton type="submit" label="Salvar"></button>
-      <button pButton type="button" label="Novo" class="ui-button-info"></button>
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+        <button pButton type="button" label="Novo" class="ui-button-info"></button>
+      </div>
     </div>
   </form>
 </div>
