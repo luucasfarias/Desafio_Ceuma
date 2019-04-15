@@ -14,7 +14,15 @@ export class CoursesService {
     headers.append('Authorization', 'Basic YWRtaW5AY2V1bWEuY29tOmFkbWlu');
 
     return this.http.get(`${this.courseUrl}`, { headers: headers })
-      .toPromise().then(response => response.json())
+      .toPromise().then(response => response.json());
+  }
+
+  deleteCourses(id: number): Promise<void> {
+    const headers = new Headers();
+    headers.append('Authorization', 'Basic YWRtaW5AY2V1bWEuY29tOmFkbWlu');
+
+    return this.http.delete(`${this.courseUrl}/${id}`, { headers })
+      .toPromise().then(() => null);
   }
 
 }

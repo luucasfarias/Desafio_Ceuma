@@ -19,9 +19,9 @@
           </p-column>
           <p-column field="workload" header="CARGA HORÁRIA" styleClass="col-workload"></p-column>
           <p-column styleClass="col-actions">
-            <ng-template pTemplate="body">
+            <ng-template let-course="rowData" pTemplate="body">
               <a pButton icon="fa-pencil" pTooltip="Editar" tooltipPosition="top"></a>
-              <button pButton icon="fa-trash" pTooltip="Excluír" tooltipPosition="top"></button>
+              <button pButton icon="fa-trash" pTooltip="Excluír" tooltipPosition="top" (click)="confirmDelete(course)"></button>
             </ng-template>
           </p-column>
         </p-dataTable>
