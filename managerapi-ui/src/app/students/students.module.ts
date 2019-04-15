@@ -28,6 +28,6 @@ import { RouterModule } from '@angular/router';
     SharedModule
   ],
   declarations: [StudentSearchComponent, StudentFormComponent],
-  exports: [StudentSearchComponent, StudentFormComponent]
+  exports: []
 })
 export class StudentsModule { }

@@ -23,6 +23,6 @@ import { RouterModule } from '@angular/router';
     SharedModule
   ],
   declarations: [CourseComponent],
-  exports: [CourseComponent]
+  exports: []
 })
 export class CoursesModule { }
