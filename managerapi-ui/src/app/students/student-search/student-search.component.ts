@@ -4,6 +4,7 @@ import { LazyLoadEvent, ConfirmationService } from 'primeng/primeng';
 import { ToastyService } from 'ng2-toasty';
 import { ErrorHandlerService } from 'app/core/error-handler.service';
 import { Title } from '@angular/platform-browser';
+import { AuthService } from 'app/security/auth.service';
 
 @Component({
   selector: 'app-student-search',
@@ -22,6 +23,7 @@ export class StudentSearchComponent implements OnInit {
 
   // ? Injetano services
   constructor(
+    private auth: AuthService,
     private studentService: StudentService,
     private toasty: ToastyService,
     private confirmation: ConfirmationService,

@@ -36,7 +36,7 @@
         <p-column styleClass="col-actions">
           <ng-template let-student="rowData" pTemplate="body">
             <a pButton icon="fa-pencil" [routerLink]="['/alunos', student.id]" pTooltip="Editar" tooltipPosition="top"></a>
-            <button pButton icon="fa-trash" pTooltip="Excluír" tooltipPosition="top" (click)="confirmDelete(student)"></button>
+            <button pButton icon="fa-trash" pTooltip="Excluír" tooltipPosition="top" [disabled]="!auth.isAllowed('ROLE_DELETE_STUDENT')" (click)="confirmDelete(student)"></button>
           </ng-template>
         </p-column>
       </p-dataTable>

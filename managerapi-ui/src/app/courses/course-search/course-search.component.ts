@@ -7,6 +7,7 @@ import { Course } from 'app/core/model';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { AuthService } from 'app/security/auth.service';
 
 @Component({
   selector: 'app-course-search',
@@ -37,6 +38,7 @@ export class CourseSearchComponent implements OnInit {
   }
 
   constructor(
+    private auth: AuthService,
     private courseService: CoursesService,
     private toasty: ToastyService,
     private confirmation: ConfirmationService,
