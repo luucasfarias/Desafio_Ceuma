@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, URLSearchParams } from '@angular/http';
+import { URLSearchParams } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { Student } from 'app/core/model';
+import { AuthHttp } from 'angular2-jwt';
 
 export class StudentFilter {
   nameSearch: string;
@@ -15,12 +16,10 @@ export class StudentService {
 
   studentsUrl = 'http://localhost:8080/students';
 
-  constructor(private http: Http) { }
+  constructor(private http: AuthHttp) { }
 
   searchStudents(filter: StudentFilter): Promise<any> {
     const params = new URLSearchParams();
-    const headers = new Headers();
-    headers.append('Authorization', 'Basic YWRtaW5AY2V1bWEuY29tOmFkbWlu');
 
     params.set('page', filter.page.toString());
     params.set('size', filter.itemsPage.toString());
@@ -32,7 +31,7 @@ export class StudentService {
     if (filter.cpfSearch) {
       params.set('cpf', filter.cpfSearch);
     }
-    return this.http.get(`${this.studentsUrl}?`, { headers, search: params })
+    return this.http.get(`${this.studentsUrl}?`, { search: params })
       .toPromise().then(response => {
         const responseJson = response.json();
         const students = responseJson.content;
@@ -48,42 +47,27 @@ export class StudentService {
   }
 
   deleteStudents(id: number): Promise<void> {
-    const headers = new Headers();
-    headers.append('Authorization', 'Basic YWRtaW5AY2V1bWEuY29tOmFkbWlu');
-
-    return this.http.delete(`${this.studentsUrl}/${id}`, { headers })
+    return this.http.delete(`${this.studentsUrl}/${id}`)
       .toPromise().then(() => null);
   }
 
   saveStudents(student: Student): Promise<Student> {
-    const headers = new Headers();
-    headers.append('Authorization', 'Basic YWRtaW5AY2V1bWEuY29tOmFkbWlu');
-    headers.append('Content-Type', 'application/json');
-
     return this.http.post(this.studentsUrl,
-      JSON.stringify(student), { headers })
+      JSON.stringify(student))
       .toPromise().then(response => response.json());
   }
 
   update(student: Student): Promise<Student> {
-    const headers = new Headers();
-    headers.append('Authorization', 'Basic YWRtaW5AY2V1bWEuY29tOmFkbWlu');
-    headers.append('Content-Type', 'application/json');
-
     return this.http.put(`${this.studentsUrl}/${student.id}`,
-      JSON.stringify(student), { headers })
+      JSON.stringify(student))
       .toPromise()
       .then(response => {
         const studentModificator = response.json();
-
         return studentModificator;
       });
   }
   buscarPorCodigo(id: number): Promise<Student> {
-    const headers = new Headers();
-    headers.append('Authorization', 'Basic YWRtaW5AY2V1bWEuY29tOmFkbWlu');
-
-    return this.http.get(`${this.studentsUrl}/${id}`, { headers })
+    return this.http.get(`${this.studentsUrl}/${id}`)
       .toPromise()
       .then(response => {
         const student = response.json();

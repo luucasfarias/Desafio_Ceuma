@@ -1,50 +1,36 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { Course } from 'app/core/model';
 import * as moment from 'moment';
+import { AuthHttp } from 'angular2-jwt';
 
 @Injectable()
 export class CoursesService {
 
   courseUrl = 'http://localhost:8080/courses';
 
-  constructor(private http: Http) { }
+  constructor(private http: AuthHttp) { }
 
   searchCourse(): Promise<any> {
-    const headers = new Headers();
-    headers.append('Authorization', 'Basic YWRtaW5AY2V1bWEuY29tOmFkbWlu');
-
-    return this.http.get(`${this.courseUrl}`, { headers: headers })
+    return this.http.get(`${this.courseUrl}`)
       .toPromise().then(response => response.json());
   }
 
   deleteCourses(id: number): Promise<void> {
-    const headers = new Headers();
-    headers.append('Authorization', 'Basic YWRtaW5AY2V1bWEuY29tOmFkbWlu');
-
-    return this.http.delete(`${this.courseUrl}/${id}`, { headers })
+    return this.http.delete(`${this.courseUrl}/${id}`)
       .toPromise().then(() => null);
   }
 
   saveCourses(course: Course): Promise<Course> {
-    const headers = new Headers();
-    headers.append('Authorization', 'Basic YWRtaW5AY2V1bWEuY29tOmFkbWlu');
-    headers.append('Content-Type', 'application/json');
-
     return this.http.post(this.courseUrl,
-      JSON.stringify(course), { headers })
+      JSON.stringify(course))
       .toPromise()
       .then(response => response.json());
   }
 
   update(course: Course): Promise<Course> {
-    const headers = new Headers();
-    headers.append('Authorization', 'Basic YWRtaW5AY2V1bWEuY29tOmFkbWlu');
-    headers.append('Content-Type', 'application/json');
-
     return this.http.put(`${this.courseUrl}/${course.id}`,
-      JSON.stringify(course), { headers })
+      JSON.stringify(course))
       .toPromise()
       .then(response => {
         const courseModificator = response.json() as Course;
@@ -56,10 +42,7 @@ export class CoursesService {
   }
 
   buscarPorCodigo(id: number): Promise<Course> {
-    const headers = new Headers();
-    headers.append('Authorization', 'Basic YWRtaW5AY2V1bWEuY29tOmFkbWlu');
-
-    return this.http.get(`${this.courseUrl}/${id}`, { headers })
+    return this.http.get(`${this.courseUrl}/${id}`)
       .toPromise()
       .then(response => {
         const course = response.json() as Course;
