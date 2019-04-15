@@ -13,6 +13,7 @@ import { RouterModule } from '@angular/router';
 import { CardComponent } from './card/card.component';
 import { PageNotFoundComponent } from './page-not-found.component';
 import { Title } from '@angular/platform-browser';
+import { AuthService } from 'app/security/auth.service';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { Title } from '@angular/platform-browser';
     StudentService,
     ConfirmationService,
     Title,
+    AuthService,
     { provide: LOCALE_ID, useValue: 'pt-BR' }
   ]
 })
