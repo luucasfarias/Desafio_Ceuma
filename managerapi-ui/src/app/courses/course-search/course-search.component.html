@@ -20,9 +20,10 @@
           <p-column field="workload" header="CARGA HORÁRIA" styleClass="col-workload"></p-column>
           <p-column styleClass="col-actions">
             <ng-template let-course="rowData" pTemplate="body">
-              <a pButton icon="fa-pencil" [routerLink]="['/cursos', course.id]" pTooltip="Editar" tooltipPosition="top"></a>
-              <button pButton icon="fa-trash" pTooltip="Excluír" tooltipPosition="top"
-                (click)="confirmDelete(course)"></button>
+              <a pButton icon="fa-pencil" [routerLink]="['/cursos', course.id]" pTooltip="Editar"
+                tooltipPosition="top"></a>
+              <button pButton icon="fa-trash" pTooltip="Excluír" [disabled]="!auth.isAllowed('ROLE_DELETE_COURSE')"
+                tooltipPosition="top" (click)="confirmDelete(course)"></button>
             </ng-template>
           </p-column>
         </p-dataTable>
