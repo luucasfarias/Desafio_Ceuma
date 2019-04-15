@@ -1,16 +1,12 @@
 import { AppComponent } from './app.component';
+import { HttpModule } from '@angular/http';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule, LOCALE_ID } from '@angular/core';
-import { ToastyModule } from 'ng2-toasty';
 
+import { CoreModule } from './core/core.module';
 import { StudentsModule } from './students/students.module';
 import { CoursesModule } from './courses/courses.module';
-import { CoreModule } from './core/core.module';
-import { HttpModule } from '@angular/http';
-import { CoursesService } from './courses/courses.service';
-import { StudentService } from './students/student.service';
-import { ConfirmDialogModule, ConfirmationService } from 'primeng/primeng';
 
 
 @NgModule({
@@ -21,19 +17,13 @@ import { ConfirmDialogModule, ConfirmationService } from 'primeng/primeng';
     BrowserModule,
     HttpModule,
     BrowserAnimationsModule,
-    ToastyModule.forRoot(),
-
-    ConfirmDialogModule,
 
     StudentsModule,
     CoursesModule,
     CoreModule,
 
   ],
-  providers: [
-    CoursesService, StudentService, ConfirmationService,
-    { provide: LOCALE_ID, useValue: 'pt-BR'}
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
