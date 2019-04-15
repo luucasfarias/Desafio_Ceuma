@@ -6,9 +6,12 @@ import { StudentFormComponent } from './students/student-form/student-form.compo
 import { PageNotFoundComponent } from './core/page-not-found.component';
 import { CourseSearchComponent } from './courses/course-search/course-search.component';
 import { CourseFormComponent } from './courses/course-form/course-form.component';
+import { LoginComponent } from './security/login/login.component';
 
 const routes: Routes = [
-  { path: '', component: CardComponent, pathMatch: 'full' },
+  // { path: '', component: CardComponent, pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
   { path: 'alunos', component: StudentSearchComponent },
   { path: 'alunos/novo', component: StudentFormComponent },
   { path: 'alunos/:id', component: StudentFormComponent },
