@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, URLSearchParams } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import { Student } from 'app/core/model';
 
 export class StudentFilter {
   nameSearch: string;
@@ -52,5 +53,16 @@ export class StudentService {
 
     return this.http.delete(`${this.studentsUrl}/${id}`, { headers })
       .toPromise().then(() => null);
+  }
+
+  saveStudents(student: Student): Promise<Student> {
+    const headers = new Headers();
+    headers.append('Authorization', 'Basic YWRtaW5AY2V1bWEuY29tOmFkbWlu');
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.post(this.studentsUrl,
+      JSON.stringify(student), { headers })
+      .toPromise().then(response => response.json());
+
   }
 }

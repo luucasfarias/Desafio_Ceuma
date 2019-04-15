@@ -1,5 +1,5 @@
 <div class="container">
-  <form #f="ngForm" autocomplet="off">
+  <form #f="ngForm" autocomplet="off" (ngSubmit)="save(f)">
     <div class="ui-g">
       <div class="ui-g-12">
         <a href="#" class="back">Voltar para a pesquisa</a>
@@ -13,7 +13,7 @@
       <div class="ui-g-5 ui-fluid">
         <label>Nome</label>
         <input type="text" pInputText placeholder="Ex: Amanda Costa" name="name_student" ngModel #name_student="ngModel"
-          required minlength="5">
+          [(ngModel)]="student.name" required minlength="5">
 
         <app-message [control]="name_student" error="required" text="Campo obrigatorio"></app-message>
         <app-message [control]="name_student" error="minlength"
@@ -22,8 +22,8 @@
 
       <div class="ui-g-3 ui-fluid">
         <label>CPF</label>
-        <input type="text" pInputText placeholder="Ex: 605.800.020.90" name="cpf" ngModel #cpf="ngModel" required
-          minlength="11">
+        <input type="text" pInputText placeholder="Ex: 605.800.020.90" name="cpf" ngModel #cpf="ngModel"
+          [(ngModel)]="student.cpf" required minlength="11">
 
         <app-message [control]="cpf" error="required" text="Campo obrigatorio"></app-message>
         <app-message [control]="cpf" error="minlength"
@@ -33,7 +33,7 @@
       <div class="ui-g-4 ui-fluid">
         <label>E-mail</label>
         <input type="text" pInputText placeholder="Ex: amanda.costa@ceuma.com" name="email" ngModel #email="ngModel"
-          required minlength="10">
+          [(ngModel)]="student.email" required minlength="10">
 
         <app-message [control]="email" error="required" text="Campo obrigatorio"></app-message>
         <app-message [control]="email" error="minlength"
@@ -42,7 +42,8 @@
 
       <div class="ui-g-3 ui-fluid">
         <label for="">Telefone</label>
-        <input type="text" pInputText name="phone" ngModel #phone="ngModel" required minlength="10">
+        <input type="text" pInputText name="phone" ngModel #phone="ngModel" [(ngModel)]="student.phone" required
+          minlength="10">
 
         <app-message [control]="phone" error="required" text="Campo obrigatorio"></app-message>
         <app-message [control]="phone" error="minlength"
@@ -51,14 +52,15 @@
 
       <div class="ui-g-2 ui-fluid">
         <label for="">CEP</label>
-        <input type="text" pInputText name="cep" ngModel #cep="ngModel" required>
+        <input type="text" pInputText name="cep" ngModel #cep="ngModel" [(ngModel)]="student.address.cep" required>
 
         <app-message [control]="cep" error="required" text="Campo obrigatorio"></app-message>
       </div>
 
       <div class="ui-g-4 ui-fluid">
         <label for="">Rua</label>
-        <input type="text" pInputText name="street" ngModel #street="ngModel" required minlength="5">
+        <input type="text" pInputText name="street" ngModel #street="ngModel" [(ngModel)]="student.address.public_place"
+          required minlength="5">
 
         <app-message [control]="street" error="required" text="Campo obrigatorio"></app-message>
         <app-message [control]="street" error="minlength"
@@ -67,7 +69,8 @@
 
       <div class="ui-g-2 ui-fluid">
         <label for="">Bairro</label>
-        <input type="text" pInputText name="neighborhood" ngModel #neighborhood="ngModel" required minlength="5">
+        <input type="text" pInputText name="neighborhood" ngModel #neighborhood="ngModel"
+          [(ngModel)]="student.address.neighborhood" required minlength="5">
 
         <app-message [control]="neighborhood" error="required" text="Campo obrigatorio"></app-message>
         <app-message [control]="neighborhood" error="minlength"
@@ -76,19 +79,22 @@
 
       <div class="ui-g-1 ui-fluid">
         <label for="">Nº Casa</label>
-        <input type="text" pInputText name="house_number" ngModel #house_number="ngModel" required>
+        <input type="text" pInputText name="house_number" ngModel #house_number="ngModel"
+          [(ngModel)]="student.address.house_number" required>
 
         <app-message [control]="house_number" error="required" text="Campo obrigatorio"></app-message>
       </div>
 
       <div class="ui-g-4 ui-fluid">
         <label>Complemento</label>
-        <input type="text" pInputText name="complement" ngModel #complement="ngModel">
+        <input type="text" pInputText name="complement" ngModel #complement="ngModel"
+          [(ngModel)]="student.address.complement">
       </div>
 
       <div class="ui-g-4 ui-fluid">
         <label for="">Cidade</label>
-        <input type="text" pInputText name="city" ngModel #city="ngModel" required minlength="5">
+        <input type="text" pInputText name="city" ngModel #city="ngModel" [(ngModel)]="student.address.city" required
+          minlength="5">
 
         <app-message [control]="city" error="required" text="Campo obrigatorio"></app-message>
         <app-message [control]="city" error="minlength"
@@ -97,7 +103,8 @@
 
       <div class="ui-g-1 ui-fluid">
         <label for="">UF</label>
-        <input type="text" pInputText name="state" ngModel #state="ngModel" required minlength="2">
+        <input type="text" pInputText name="state" ngModel #state="ngModel" [(ngModel)]="student.address.state" required
+          minlength="2">
 
         <app-message [control]="state" error="required" text="Campo obrigatorio"></app-message>
         <app-message [control]="state" error="minlength"
@@ -107,11 +114,11 @@
       <div class="ui-g-3 ui-fluid">
         <label for="">Curso</label>
         <p-dropdown name="course" [options]="courses" [filter]="true" [autoWidth]="false" ngModel
-          placeholder="Selecione" required></p-dropdown>
+          [(ngModel)]="student.course.id" placeholder="Selecione" required></p-dropdown>
       </div>
 
       <div class="ui-g-12">
-        <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+        <button pButton type="submit" label="Salvar"></button>
         <button pButton type="button" label="Novo" class="ui-button-info"></button>
       </div>
     </div>
