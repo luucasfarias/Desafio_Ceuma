@@ -35,7 +35,7 @@
         <p-column field="course.name" header="CURSO" styleClass="col-course"></p-column>
         <p-column styleClass="col-actions">
           <ng-template let-student="rowData" pTemplate="body">
-            <a pButton icon="fa-pencil" pTooltip="Editar" tooltipPosition="top"></a>
+            <a pButton icon="fa-pencil" [routerLink]="['/alunos', student.id]" pTooltip="Editar" tooltipPosition="top"></a>
             <button pButton icon="fa-trash" pTooltip="Excluír" tooltipPosition="top" (click)="confirmDelete(student)"></button>
           </ng-template>
         </p-column>
@@ -43,7 +43,7 @@
     </div>
 
     <div class="ui-g-12">
-      <a pButton label="Novo Aluno" styleClass="new-student"></a>
+      <a pButton label="Novo Aluno" routerLink="/alunos/novo" styleClass="new-student"></a>
     </div>
   </div>
 

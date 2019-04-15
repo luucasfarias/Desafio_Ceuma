@@ -2,7 +2,7 @@
   <form #f="ngForm" autocomplet="off" (ngSubmit)="save(f)">
     <div class="ui-g">
       <div class="ui-g-12">
-        <a href="#" class="back">Voltar para a pesquisa</a>
+        <a routerLink="/alunos" class="back">Voltar para a pesquisa</a>
       </div>
 
       <div class="ui-g-12">
@@ -119,7 +119,7 @@
 
       <div class="ui-g-12">
         <button pButton type="submit" label="Salvar"></button>
-        <button pButton type="button" label="Novo" class="ui-button-info"></button>
+        <a pButton label="Novo" routerLink="/alunos/novo" class="ui-button-info"></a>
       </div>
     </div>
   </form>

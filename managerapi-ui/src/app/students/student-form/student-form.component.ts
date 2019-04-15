@@ -5,6 +5,7 @@ import { Student } from 'app/core/model';
 import { FormControl } from '@angular/forms';
 import { StudentService } from '../student.service';
 import { ToastyService } from 'ng2-toasty';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -22,10 +23,13 @@ export class StudentFormComponent implements OnInit {
     private couseService: CoursesService,
     private studentService: StudentService,
     private errorHandler: ErrorHandlerService,
-    private toasty: ToastyService
+    private toasty: ToastyService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    console.log(this.route.snapshot.params['id']);
+
     this.loadCourses();
   }
 
