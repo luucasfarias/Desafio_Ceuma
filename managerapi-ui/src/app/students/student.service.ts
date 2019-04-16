@@ -3,6 +3,8 @@ import { URLSearchParams } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { Student } from 'app/core/model';
 import { AuthHttp } from 'angular2-jwt';
+import { environment } from 'environments/environment';
+
 
 export class StudentFilter {
   nameSearch: string;
@@ -14,9 +16,11 @@ export class StudentFilter {
 @Injectable()
 export class StudentService {
 
-  studentsUrl = 'http://localhost:8080/students';
+  studentsUrl: string;
 
-  constructor(private http: AuthHttp) { }
+  constructor(private http: AuthHttp) {
+    this.studentsUrl = `${environment.apiURL}/students`;
+  }
 
   searchStudents(filter: StudentFilter): Promise<any> {
     const params = new URLSearchParams();

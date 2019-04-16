@@ -3,13 +3,17 @@ import 'rxjs/add/operator/toPromise';
 import { Course } from 'app/core/model';
 import * as moment from 'moment';
 import { AuthHttp } from 'angular2-jwt';
+import { environment } from 'environments/environment';
+
 
 @Injectable()
 export class CoursesService {
 
-  courseUrl = 'http://localhost:8080/courses';
+  courseUrl: string;
 
-  constructor(private http: AuthHttp) { }
+  constructor(private http: AuthHttp) {
+    this.courseUrl = `${environment.apiURL}/courses`;
+  }
 
   searchCourse(): Promise<any> {
     return this.http.get(`${this.courseUrl}`)
