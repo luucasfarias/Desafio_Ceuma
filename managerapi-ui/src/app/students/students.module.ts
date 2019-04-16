@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StudentFormComponent } from './student-form/student-form.component';
 import { SharedModule } from 'app/shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { InputMaskModule } from 'primeng/primeng';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { RouterModule } from '@angular/router';
     ButtonModule,
     DataTableModule,
     TooltipModule,
+    InputMaskModule,
     DialogModule,
     DropdownModule,
     RouterModule,

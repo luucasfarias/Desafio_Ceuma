@@ -12,74 +12,70 @@
 
       <div class="ui-g-5 ui-fluid">
         <label>Nome</label>
-        <input type="text" pInputText placeholder="Ex: Amanda Costa" name="name_student" ngModel #name_student="ngModel"
-          [(ngModel)]="student.name" required minlength="5">
+        <input type="text" pInputText name="name_student" ngModel #name_student="ngModel"
+          [(ngModel)]="student.name" required >
 
         <app-message [control]="name_student" error="required" text="Campo obrigatorio"></app-message>
-        <app-message [control]="name_student" error="minlength"
-          text="Este campo deve ter no mínimo {{ name_student.errors?.minlength?.requiredLength }}"></app-message>
       </div>
 
       <div class="ui-g-3 ui-fluid">
         <label>CPF</label>
-        <input type="text" pInputText placeholder="Ex: 605.800.020.90" name="cpf" ngModel #cpf="ngModel"
-          [(ngModel)]="student.cpf" required minlength="11">
+        <p-inputMask name="cpf" ngModel #cpf="ngModel" [(ngModel)]="student.cpf" mask="999-999-999-99" required></p-inputMask>
+
+        <!--
+          <input type="text" pInputText placeholder="Ex: 605.800.020.90" name="cpf" ngModel #cpf="ngModel"
+            [(ngModel)]="student.cpf" required >
+        -->
 
         <app-message [control]="cpf" error="required" text="Campo obrigatorio"></app-message>
-        <app-message [control]="cpf" error="minlength"
-          text="Este campo deve ter no mínimo {{ cpf.errors?.minlength?.requiredLength }}"></app-message>
       </div>
 
       <div class="ui-g-4 ui-fluid">
         <label>E-mail</label>
-        <input type="text" pInputText placeholder="Ex: amanda.costa@ceuma.com" name="email" ngModel #email="ngModel"
-          [(ngModel)]="student.email" required minlength="10">
+        <input type="text" pInputText name="email" ngModel #email="ngModel"
+          [(ngModel)]="student.email" required >
 
         <app-message [control]="email" error="required" text="Campo obrigatorio"></app-message>
-        <app-message [control]="email" error="minlength"
-          text="Este campo deve ter no mínimo {{ email.errors?.minlength?.requiredLength }}"></app-message>
       </div>
 
       <div class="ui-g-3 ui-fluid">
         <label for="">Telefone</label>
-        <input type="text" pInputText name="phone" ngModel #phone="ngModel" [(ngModel)]="student.phone" required
-          minlength="10">
+        <p-inputMask name="phone" ngModel #phone="ngModel" [(ngModel)]="student.phone" mask="(99) 99999-9999" required></p-inputMask>
 
+        <!--
+          <input type="text" pInputText name="phone" ngModel #phone="ngModel" [(ngModel)]="student.phone" required
+            minlength="10">
+        -->
         <app-message [control]="phone" error="required" text="Campo obrigatorio"></app-message>
-        <app-message [control]="phone" error="minlength"
-          text="Este campo deve ter no mínimo {{ phone.errors?.minlength?.requiredLength }}"></app-message>
       </div>
 
       <div class="ui-g-2 ui-fluid">
         <label for="">CEP</label>
-        <input type="text" pInputText name="cep" ngModel #cep="ngModel" [(ngModel)]="student.address.cep" required>
-
-        <app-message [control]="cep" error="required" text="Campo obrigatorio"></app-message>
+        <p-inputMask  name="cep" ngModel #cep="ngModel" [(ngModel)]="student.address.cep" mask="99999-999"></p-inputMask>
+        <!--
+          <input type="text" pInputText name="cep" ngModel #cep="ngModel" [(ngModel)]="student.address.cep" required>
+        -->
       </div>
 
       <div class="ui-g-4 ui-fluid">
         <label for="">Rua</label>
         <input type="text" pInputText name="street" ngModel #street="ngModel" [(ngModel)]="student.address.public_place"
-          required minlength="5">
+          required >
 
         <app-message [control]="street" error="required" text="Campo obrigatorio"></app-message>
-        <app-message [control]="street" error="minlength"
-          text="Este campo deve ter no mínimo {{ street.errors?.minlength?.requiredLength }}"></app-message>
       </div>
 
       <div class="ui-g-2 ui-fluid">
         <label for="">Bairro</label>
         <input type="text" pInputText name="neighborhood" ngModel #neighborhood="ngModel"
-          [(ngModel)]="student.address.neighborhood" required minlength="5">
+          [(ngModel)]="student.address.neighborhood" required >
 
         <app-message [control]="neighborhood" error="required" text="Campo obrigatorio"></app-message>
-        <app-message [control]="neighborhood" error="minlength"
-          text="Este campo deve ter no mínimo {{ neighborhood.errors?.minlength?.requiredLength }}"></app-message>
       </div>
 
       <div class="ui-g-1 ui-fluid">
         <label for="">Nº Casa</label>
-        <input type="text" pInputText name="house_number" ngModel #house_number="ngModel"
+        <input type="number" pInputText name="house_number" ngModel #house_number="ngModel"
           [(ngModel)]="student.address.house_number" required>
 
         <app-message [control]="house_number" error="required" text="Campo obrigatorio"></app-message>
@@ -93,12 +89,9 @@
 
       <div class="ui-g-4 ui-fluid">
         <label for="">Cidade</label>
-        <input type="text" pInputText name="city" ngModel #city="ngModel" [(ngModel)]="student.address.city" required
-          minlength="5">
+        <input type="text" pInputText name="city" ngModel #city="ngModel" [(ngModel)]="student.address.city" required>
 
         <app-message [control]="city" error="required" text="Campo obrigatorio"></app-message>
-        <app-message [control]="city" error="minlength"
-          text="Este campo deve ter no mínimo {{ city.errors?.minlength?.requiredLength }}"></app-message>
       </div>
 
       <div class="ui-g-1 ui-fluid">
@@ -107,8 +100,6 @@
           minlength="2">
 
         <app-message [control]="state" error="required" text="Campo obrigatorio"></app-message>
-        <app-message [control]="state" error="minlength"
-          text="Este campo deve ter no mínimo {{ state.errors?.minlength?.requiredLength }}"></app-message>
       </div>
 
       <div class="ui-g-3 ui-fluid">
