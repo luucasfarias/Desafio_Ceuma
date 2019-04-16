@@ -92,6 +92,8 @@ export class StudentFormComponent implements OnInit {
   }
 
   newStudent(form: FormControl) {
+    form.reset();
+    this.student = new Student();
     this.routerDirect.navigate(['/alunos/novo']);
   }
 
