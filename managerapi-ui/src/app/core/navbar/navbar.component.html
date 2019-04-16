@@ -1,7 +1,7 @@
 <nav class="navbar">
   <div class="container">
     <div class="ui-g">
-      <div class="ui-g-12">
+      <div class="ui-g-10">
         <a href="javascript:;" class="navbar-toogle" (click)="showMenu = !showMenu"><i class="fa fa-bars"></i></a>
       </div>
     </div>
@@ -10,10 +10,10 @@
   <ul class="navbar-menu" [hidden]="!showMenu">
     <li class="navbar-user">{{ auth.jwtPayload?.name }}</li>
     <li class="navbar-menuitem" routerLinkActive="active" *ngIf="auth.isAllowed('ROLE_SEARCH_STUDENT')"><a
-        routerLink="/alunos"><i class="fa fa-users"></i> Alunos</a>
+        routerLink="/alunos">Alunos</a>
     </li>
     <li class="navbar-menuitem" routerLinkActive="active" *ngIf="auth.isAllowed('ROLE_SEARCH_COURSE')"><a
         routerLink="/cursos">Cursos</a></li>
-    <li class="navbar-menuitem"><a routerLink="#" (click)="logout()"><i class="fa fa-sign-out-alt">Logout</i></a></li>
+    <li class="navbar-menuitem"><a routerLink="#" (click)="logout()">Logout</a></li>
   </ul>
 </nav>

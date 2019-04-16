@@ -3,6 +3,10 @@
 
     <form autocomplete="off" (ngSubmit)="search()">
       <div class="ui-g-12">
+        <a routerLink="/home" class="back">Voltar</a>
+      </div>
+
+      <div class="ui-g-12">
         <h1>Alunos Cadastrados</h1>
       </div>
 
@@ -10,17 +14,24 @@
         <h3>Pesquisar por Nome ou CPF</h3>
       </div>
 
-      <div class="ui-g-5 ui-fluid">
+      <div class="ui-g-4 ui-fluid">
         <input pInputText type="text" name="nameSearch" [(ngModel)]="filter.nameSearch"
           placeholder="Maria Pereira Silva">
       </div>
 
-      <div class="ui-g-3 ui-fluid">
-        <input pInputText type="text" name="cpfSearch" [(ngModel)]="filter.cpfSearch" placeholder="168.772.863-16">
+      <div class="ui-g-2 ui-fluid">
+        <p-inputMask name="cpfSearch" [(ngModel)]="filter.cpfSearch" placeholder="168.772.863-16" mask="999-999-999-99"></p-inputMask>
+        <!--
+          <input pInputText type="text" name="cpfSearch" [(ngModel)]="filter.cpfSearch" placeholder="168.772.863-16">
+        -->
       </div>
 
       <div class="ui-g-3 btn-search">
-        <button pButton type="submit" icon="fa-search"></button>
+        <button pButton type="submit" pTooltip="Pesquisar" icon="fa-search"></button>
+      </div>
+
+      <div class="ui-g-3">
+        <a pButton label="Novo Aluno" routerLink="/alunos/novo" pTooltip="Cadastrar novo aluno(a)" styleClass="new-student"></a>
       </div>
     </form>
   </div>
@@ -28,10 +39,13 @@
   <div class="ui-g">
     <div class="ui-g-12">
       <p-dataTable [value]="students" [responsive]="true" [paginator]="true" [rows]="filter.itemsPage" [lazy]="true"
-        [totalRecords]="totalRegisters" (onLazyLoad)="changePage($event)" #table>
+        [totalRecords]="totalRegisters" (onLazyLoad)="changePage($event)" #table emptyMessage="Nenhum registro encontrado">
         <p-column field="name" header="NOME" styleClass="col-name"></p-column>
         <p-column field="cpf" header="CPF" styleClass="col-cpf"></p-column>
-        <p-column field="address.public_place" header="ENDEREÇO"></p-column>
+        <p-column field="address.public_place" header="RUA"></p-column>
+        <p-column field="address.cep" header="CEP" styleClass="col-cep"></p-column>
+        <p-column field="address.neighborhood" header="BAIRRO"></p-column>
+        <p-column field="address.house_number" header="Nº CASA" styleClass="col-housenumber"></p-column>
         <p-column field="course.name" header="CURSO" styleClass="col-course"></p-column>
         <p-column styleClass="col-actions">
           <ng-template let-student="rowData" pTemplate="body">
@@ -40,10 +54,6 @@
           </ng-template>
         </p-column>
       </p-dataTable>
-    </div>
-
-    <div class="ui-g-12">
-      <a pButton label="Novo Aluno" routerLink="/alunos/novo" styleClass="new-student"></a>
     </div>
   </div>
 

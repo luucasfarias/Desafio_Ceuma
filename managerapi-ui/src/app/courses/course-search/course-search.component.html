@@ -1,16 +1,20 @@
 <div class="container">
   <div class="ui-g">
     <div class="ui-g-12">
+      <a routerLink="/home" class="back">Voltar</a>
+    </div>
+    <div class="ui-g-12">
       <h1>Cursos Cadastrados</h1>
     </div>
 
     <div class="ui-g-12">
-      <a type="button" routerLink="/cursos/novo" pButton label="Novo Curso"></a>
+      <a type="button" routerLink="/cursos/novo" pTooltip="Cadastrar novo curso" pButton label="Novo Curso"></a>
     </div>
 
     <div class="ui-g">
       <div class="ui-g-12">
-        <p-dataTable [value]="courses" [paginator]="true" [rows]="4" [responsive]="true">
+        <p-dataTable [value]="courses" [paginator]="true" [rows]="4" [responsive]="true"
+          emptyMessage="Nenhum registro encontrado">
           <p-column field="name" header="CURSO" styleClass="col-name"></p-column>
           <p-column header="DATA REGISTRO" styleClass="col-data">
             <ng-template let-course="rowData" pTemplate="body">
