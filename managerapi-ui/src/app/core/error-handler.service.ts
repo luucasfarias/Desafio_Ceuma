@@ -22,6 +22,9 @@ export class ErrorHandlerService {
       message = 'Ocorreu um erro nesta solicitação';
       console.log('Error message: ', message);
 
+      if (errorResponse.status === 400) {
+        message = 'Você não pode excluir um curso que está ativo.';
+      }
       if (errorResponse.status === 403) {
         message = 'Você não tem permissão para exclusão de alunos.';
       }
