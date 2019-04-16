@@ -15,7 +15,7 @@
         <input type="text" pInputText name="name_student" ngModel #name_student="ngModel"
           [(ngModel)]="student.name" required >
 
-        <app-message [control]="name_student" error="required" text="Campo obrigatorio"></app-message>
+        <app-message [control]="name_student" error="required" text="Campo obrigatório"></app-message>
       </div>
 
       <div class="ui-g-3 ui-fluid">
@@ -27,15 +27,15 @@
             [(ngModel)]="student.cpf" required >
         -->
 
-        <app-message [control]="cpf" error="required" text="Campo obrigatorio"></app-message>
+        <app-message [control]="cpf" error="required" text="Campo obrigatório"></app-message>
       </div>
 
       <div class="ui-g-4 ui-fluid">
         <label>E-mail</label>
-        <input type="text" pInputText name="email" ngModel #email="ngModel"
+        <input type="email" pInputText name="email" ngModel #email="ngModel"
           [(ngModel)]="student.email" required >
 
-        <app-message [control]="email" error="required" text="Campo obrigatorio"></app-message>
+        <app-message [control]="email" error="required" text="Campo obrigatório"></app-message>
       </div>
 
       <div class="ui-g-3 ui-fluid">
@@ -46,7 +46,7 @@
           <input type="text" pInputText name="phone" ngModel #phone="ngModel" [(ngModel)]="student.phone" required
             minlength="10">
         -->
-        <app-message [control]="phone" error="required" text="Campo obrigatorio"></app-message>
+        <app-message [control]="phone" error="required" text="Campo obrigatório"></app-message>
       </div>
 
       <div class="ui-g-2 ui-fluid">
@@ -62,7 +62,7 @@
         <input type="text" pInputText name="street" ngModel #street="ngModel" [(ngModel)]="student.address.public_place"
           required >
 
-        <app-message [control]="street" error="required" text="Campo obrigatorio"></app-message>
+        <app-message [control]="street" error="required" text="Campo obrigatório"></app-message>
       </div>
 
       <div class="ui-g-2 ui-fluid">
@@ -70,7 +70,7 @@
         <input type="text" pInputText name="neighborhood" ngModel #neighborhood="ngModel"
           [(ngModel)]="student.address.neighborhood" required >
 
-        <app-message [control]="neighborhood" error="required" text="Campo obrigatorio"></app-message>
+        <app-message [control]="neighborhood" error="required" text="Campo obrigatório"></app-message>
       </div>
 
       <div class="ui-g-1 ui-fluid">
@@ -78,7 +78,7 @@
         <input type="number" pInputText name="house_number" ngModel #house_number="ngModel"
           [(ngModel)]="student.address.house_number" required>
 
-        <app-message [control]="house_number" error="required" text="Campo obrigatorio"></app-message>
+        <app-message [control]="house_number" error="required" text="Campo obrigatório"></app-message>
       </div>
 
       <div class="ui-g-4 ui-fluid">
@@ -91,7 +91,7 @@
         <label for="">Cidade</label>
         <input type="text" pInputText name="city" ngModel #city="ngModel" [(ngModel)]="student.address.city" required>
 
-        <app-message [control]="city" error="required" text="Campo obrigatorio"></app-message>
+        <app-message [control]="city" error="required" text="Campo obrigatório"></app-message>
       </div>
 
       <div class="ui-g-1 ui-fluid">
@@ -99,7 +99,7 @@
         <input type="text" pInputText name="state" ngModel #state="ngModel" [(ngModel)]="student.address.state" required
           minlength="2">
 
-        <app-message [control]="state" error="required" text="Campo obrigatorio"></app-message>
+        <app-message [control]="state" error="required" text="Campo obrigatório"></app-message>
       </div>
 
       <div class="ui-g-3 ui-fluid">

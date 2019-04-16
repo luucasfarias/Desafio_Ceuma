@@ -13,11 +13,13 @@
         <label>Nome</label>
         <input type="text" pInputText name="name" ngModel #name_course="ngModel" [(ngModel)]="course.name" required
           minlength="5">
+
+        <app-message [control]="name_course" error="required" text="Campo obrigatório"></app-message>
       </div>
 
       <div class="ui-g-3 ui-fluid">
         <label>Data Registro</label>
-        <p-calendar name="dateRegister" dateFormat="dd/mm/yy" [inline]="false" [readonlyInput]="false" [showIcon]="true"
+        <p-calendar name="dateRegister" dateFormat="dd/mm/yy" [inline]="false" [readonlyInput]="true" [showIcon]="true"
           [(ngModel)]="course.dateRegister" #dateRegister="ngModel"></p-calendar>
       </div>
 
@@ -25,6 +27,8 @@
         <label>Carga Horária</label>
         <input type="text" pInputText name="workload" ngModel #workload="ngModel" [(ngModel)]="course.workload"
           required>
+
+        <app-message [control]="workload" error="required" text="Campo obrigatório"></app-message>
       </div>
 
       <div class="ui-g-12">
